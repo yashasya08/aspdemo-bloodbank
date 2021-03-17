@@ -18,38 +18,45 @@
     <br />
 <h1 class="style5"><strong>Total Patient List </strong> </h1>
     <p class="style5">&nbsp;</p>
+    <p class="style5">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+            CellPadding="4" CssClass="datashow" DataKeyNames="Email" 
+            DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="90%">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                <asp:BoundField DataField="Age" HeaderText="Age" SortExpression="Age" />
+                <asp:BoundField DataField="Sex" HeaderText="Sex" SortExpression="Sex" />
+                <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
+                <asp:BoundField DataField="Email" HeaderText="Email" ReadOnly="True" 
+                    SortExpression="Email" />
+                <asp:BoundField DataField="Password" HeaderText="Password" 
+                    SortExpression="Password" />
+                <asp:BoundField DataField="MobileNo" HeaderText="MobileNo" 
+                    SortExpression="MobileNo" />
+                <asp:BoundField DataField="BloodGroup" HeaderText="BloodGroup" 
+                    SortExpression="BloodGroup" />
+                <asp:BoundField DataField="UnitRequired" HeaderText="UnitRequired" 
+                    SortExpression="UnitRequired" />
+                <asp:BoundField DataField="Disease" HeaderText="Disease" 
+                    SortExpression="Disease" />
+            </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:bloodConnectionString %>" 
+            SelectCommand="SELECT * FROM [patient]"></asp:SqlDataSource>
+    </p>
 </div>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-        CellPadding="4" CssClass="datashow" DataSourceID="SqlDataSource1" 
-        ForeColor="#333333" GridLines="None" Width="90%">
-        <AlternatingRowStyle BackColor="White" />
-        <Columns>
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-            <asp:BoundField DataField="age" HeaderText="age" SortExpression="age" />
-            <asp:BoundField DataField="sex" HeaderText="sex" SortExpression="sex" />
-            <asp:BoundField DataField="address" HeaderText="address" 
-                SortExpression="address" />
-            <asp:BoundField DataField="mobileno" HeaderText="mobileno" 
-                SortExpression="mobileno" />
-            <asp:BoundField DataField="blood" HeaderText="blood" SortExpression="blood" />
-            <asp:BoundField DataField="unit" HeaderText="unit" SortExpression="unit" />
-            <asp:BoundField DataField="disease" HeaderText="disease" 
-                SortExpression="disease" />
-        </Columns>
-        <EditRowStyle BackColor="#2461BF" />
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-        <SortedDescendingHeaderStyle BackColor="#4870BE" />
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:bloodConnectionString %>" 
-        SelectCommand="SELECT * FROM [patient] ORDER BY [Name]"></asp:SqlDataSource>
     <br />
 </asp:Content>
 

@@ -12,10 +12,33 @@ using System.Configuration;
 
 public partial class Default2 : System.Web.UI.Page
 {
+
+    public SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["bcacon"].ConnectionString);
+
+    string eid= "Did00";
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            autoid();
+
+        }
 
     }
+    private void autoid()
+    {
+        con.Open();
+        SqlCommand cmd = new SqlCommand(" select count(Name) from donor ",con);
+        int i = Convert.ToInt32(cmd.ExecuteScalar());
+        con.Close();
+        i++;
+        labelID.Text = eid + i.ToString();
+
+
+    }
+
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
 
@@ -28,22 +51,24 @@ public partial class Default2 : System.Web.UI.Page
         string gen=DropDownList2.Text;
         string bg=DropDownList1.Text;
         string mob=Textmob.Text;
-
-        string strcon=ConfigurationManager.ConnectionStrings["bcacon"].ConnectionString;
-
-        SqlConnection con = new SqlConnection(strcon);
-
+        string mail = Textmail.Text;
+        string pass = Textpass.Text;
+        string id = labelID.Text;
+        
         con.Open();
 
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = con;
-        cmd.CommandText = "insert into donor(name,address,age,gender,bloodgroup,mobileno) values(@fn,@ad,@ag,@gen,@bg,@mob)";
+        cmd.CommandText = "insert into donor (Name,City,Email,Age,Sex,BloodGroup,Mobileno,Password,Donor_ID) values(@fn,@ad,@mail,@ag,@gen,@bg,@mob,@pass,@id)";
         cmd.Parameters.AddWithValue("@fn", fn);
         cmd.Parameters.AddWithValue("@ad", ad);
+        cmd.Parameters.AddWithValue("@mail", mail);
         cmd.Parameters.AddWithValue("@ag", ag);
         cmd.Parameters.AddWithValue("@gen", gen);
         cmd.Parameters.AddWithValue("@bg", bg);
         cmd.Parameters.AddWithValue("@mob", mob);
+        cmd.Parameters.AddWithValue("@pass", pass);
+        cmd.Parameters.AddWithValue("@id", id);
 
         int i = cmd.ExecuteNonQuery();
 
@@ -62,5 +87,14 @@ public partial class Default2 : System.Web.UI.Page
 
         con.Close();
 
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Textname.Text = " ";
+        Textadd.Text = " ";
+         Textage.Text = " ";
+        Textmob.Text= "+91 ";
+        Textmail.Text= " ";
+        Textpass.Text = " ";
     }
 }

@@ -9,7 +9,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-<div class="divmid">
+    <div class="divmid">
 <a href="Dashboard.aspx">
 <h3 bgcolor="grey"><u> <- Back To Dashboard</u></h3>
 </a>
@@ -20,20 +20,22 @@
     <p class="style5">&nbsp;</p>
     <p class="style5">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-            CellPadding="4" CssClass="datashow" DataSourceID="SqlDataSource1" 
-            ForeColor="#333333" GridLines="None" Width="90%">
+            CellPadding="4" CssClass="datashow" DataKeyNames="Email" 
+            DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="90%">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
-                <asp:BoundField DataField="address" HeaderText="address" 
-                    SortExpression="address" />
-                <asp:BoundField DataField="age" HeaderText="age" SortExpression="age" />
-                <asp:BoundField DataField="gender" HeaderText="gender" 
-                    SortExpression="gender" />
-                <asp:BoundField DataField="bloodgroup" HeaderText="bloodgroup" 
-                    SortExpression="bloodgroup" />
-                <asp:BoundField DataField="mobileno" HeaderText="mobileno" 
-                    SortExpression="mobileno" />
+                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
+                <asp:BoundField DataField="Email" HeaderText="Email" ReadOnly="True" 
+                    SortExpression="Email" />
+                <asp:BoundField DataField="Age" HeaderText="Age" SortExpression="Age" />
+                <asp:BoundField DataField="Sex" HeaderText="Sex" SortExpression="Sex" />
+                <asp:BoundField DataField="BloodGroup" HeaderText="BloodGroup" 
+                    SortExpression="BloodGroup" />
+                <asp:BoundField DataField="Mobileno" HeaderText="Mobileno" 
+                    SortExpression="Mobileno" />
+                <asp:BoundField DataField="Password" HeaderText="Password" 
+                    SortExpression="Password" />
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -48,7 +50,7 @@
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:bloodConnectionString %>" 
-            SelectCommand="SELECT * FROM [donor] ORDER BY [name]"></asp:SqlDataSource>
+            SelectCommand="SELECT * FROM [donor]"></asp:SqlDataSource>
     </p>
     <p class="style5">&nbsp;</p>
 </div>
